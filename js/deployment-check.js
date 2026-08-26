@@ -39,7 +39,15 @@ const pulseBlock = html.match(/const pulseQuestions=\[([\s\S]*?)\n    \];/)?.[1]
 check('Seven-question Participant Pulse', (pulseBlock.match(/\{key:/g) || []).length === 7 && /QUESTION':'SOALAN/.test(html), 'One question per screen; one answer per question');
 const demographicBlock = html.match(/const demographicQuestions=\[([\s\S]*?)\n    \];/)?.[1] || '';
 check('Four participant demographics', (demographicBlock.match(/\{key:/g) || []).length === 4 && /demographicPayload/.test(html), 'Institution, role, age group and gender');
+check(
+  'Participant survey render target',
+  html.includes("pulseHost.id='pulseApp'") &&
+    html.includes("pulseHost.addEventListener('click'") &&
+    !html.includes("getElementById('pulseHost')"),
+  'Profile and Participant Pulse initialise against the same live element'
+);
 check('Research endpoint configuration', fs.existsSync(path.join(root, 'research-config.js')) && /window\.RESEARCH_CONFIG/.test(fs.readFileSync(path.join(root, 'research-config.js'), 'utf8')) && /submitResearchSurvey/.test(html), 'Apps Script endpoint can be configured separately');
+check('Research activity payload', /activityData:\{selectedStudioOutput:/.test(html) && /learningKit:\{departmentField:/.test(html) && /verificationChecksCompleted:/.test(html) && /kitPromptGenerated:/.test(html), 'Studio choice, task completion and final learning-kit context');
 check('Short post-webinar evaluation', new Set([...html.matchAll(/name="(eval[1-5])"/g)].map(m => m[1])).size === 5 && /id="evalFeedback"/.test(html), '5 Likert statements + 1 optional open response');
 
 const images = [...html.matchAll(/<img\b[^>]*>/g)].map(m => m[0]);
@@ -67,6 +75,8 @@ check('Unique element IDs', duplicateIds.length === 0, duplicateIds.join(', '));
 const copyTargets = [...html.matchAll(/copyText\('([^']+)'/g)].map(m => m[1]);
 check('Prompt copy buttons', copyTargets.length === 4 && copyTargets.every(id => ids.includes(id)), copyTargets.join(', '));
 check('Output templates', (html.match(/name:\{en:/g) || []).length === 9, '9 templates');
+check('Studio prompt fallback', /id="templateMenu"[\s\S]*data-template="8"/.test(html) && /id="outputPrompt">Create an Audio Overview/.test(html), 'Nine visible output choices and a copy-ready prompt before enhancement');
+check('Tab 08 and 09 have distinct purposes', /ASK IN CHAT/.test(html) && /CHOOSE A STUDIO OUTPUT/.test(html) && /FINALISE YOUR CLASSROOM-READY KIT/.test(html) && /HOW THIS DIFFERS FROM TAB 08/.test(html), 'Practice first; personalise, verify and save in the capstone');
 
 const externalLinks = [...html.matchAll(/href="(https:[^"]+)"/g)].map(m => m[1]);
 check('External links use HTTPS', externalLinks.length > 0 && externalLinks.every(x => x.startsWith('https://')), externalLinks.join(', '));

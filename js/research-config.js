@@ -6,6 +6,6 @@
 window.RESEARCH_CONFIG = {
   endpoint: '',
   sessionCode: 'GNB-WEBINAR-2026',
-  webappVersion: '1.1'
+  webappVersion: '1.2'
 };
 
