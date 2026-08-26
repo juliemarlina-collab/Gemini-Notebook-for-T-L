@@ -4,22 +4,40 @@ Static webinar website for GitHub Pages or Netlify. No build process is required
 
 This reviewed edition includes the completed Phase 2, 3, 5, 7, 8, 10 and 11 improvements while preserving the established nine-stage webinar flow. Phase 12 automated deployment checks are included for release validation.
 
+## Bahasa Melayu Malaysia language review
+
+- The complete BM interface uses a professional Malaysian polytechnic register rather than literal or conversational translation.
+- Informal wording such as `guna` is replaced with standard forms such as `menggunakan` or `menggunakannya`.
+- Teaching terms are standardised, including `hasil pembelajaran`, `pentaksiran`, `lakon peranan`, `bahan edaran`, `dek slaid`, `pembezaan pengajaran` and `muat semula`.
+- Official Gemini Notebook interface names are retained where participants must recognise the on-screen control, with BM clarification where needed.
+- Form labels, selection options, generated prompts, participant profiles, evidence descriptions and image alternative text all switch consistently between English and BM.
+- Webinar wording uses natural Malaysian communication, such as `Agenda Webinar`, while official Gemini Notebook interface labels (`Sources`, `Chat`, `Studio`, `Add Sources`, `Fast Research` and `Slide Deck`) remain unchanged for hands-on accuracy.
+
 ## Phase 1 — Foundation stabilised
 
 - Nine stages use consistent numbering and navigation.
 - Back and Next routes follow the correct sequence.
 - External links open safely in a new tab.
-- Four local interface images are included in `assets`.
+- Four local interface images and three DUE30022 transformation previews are included in `assets`.
 - English and Bahasa Melayu switching covers navigation, instructions, prompts, limits, activities, controls and form options.
 - Screenshot labels use percentage positioning for responsive alignment.
 
 ## Phase 2 — Participant Pulse
 
+- Adds a compact Part A with four demographic items: institution category, current role, age group and gender. Teaching field and teaching experience remain in Part B.
 - Seven useful questions are presented one at a time: familiarity, AI confidence, intended output, likely source, teaching field, main concern and teaching experience.
 - Each question accepts only one answer.
 - Participants cannot proceed without answering the current question.
 - The progress bar tracks completed responses.
 - A final profile summarises all selections as Guided Starter, Curious Explorer, Confident Creator or Peer Guide.
+
+## Research database connection
+
+- Edit `research-config.js` and paste the deployed Google Apps Script URL ending in `/exec`.
+- Keep a different `sessionCode` for each webinar cohort.
+- Participants must complete four demographic items, seven Participant Pulse questions, five post-webinar statements and research consent before online submission.
+- The same anonymous browser ID updates an existing response instead of creating duplicate rows.
+- If the endpoint is blank, the webapp continues to work locally but the research-submission button remains disabled.
 
 ## Phase 3 — Interface Infographic
 
@@ -28,6 +46,14 @@ This reviewed edition includes the completed Phase 2, 3, 5, 7, 8, 10 and 11 impr
 - Important Buttons labels Add Sources, Source Checkbox, Chat Input, Send, Citation, Save to Note, Studio Outputs, and Share & Settings.
 - Callouts use percentage coordinates tied to the screenshot.
 - Tablet and mobile layouts reduce callouts to numbered markers while retaining the complete explanations below.
+
+## Section 06 — Authentic DUE30022 Transformation
+
+- Replaces the former Workplace Safety mock-up with Madam Julie's real **Enquiries & Complaints** example.
+- Shows the 30-slide original source, the generated four-page F2F active-learning handout and the generated 13-slide class deck.
+- Explains the observable instructional changes: timed lesson structure, role-play cards, language support, formative assessment and exit-ticket reflection.
+- Includes accessible previews and local links to open or download all three evidence files from `resources`.
+- Reminds participants that lecturer review remains essential before classroom use.
 
 ## Phase 5 — Limits and Output Guidance
 
@@ -83,7 +109,7 @@ Drag the complete `gemini-notebook-static` folder or ZIP into Netlify Drop.
 ## GitHub Pages
 
 1. Create a new GitHub repository.
-2. Upload `index.html`, `netlify.toml`, `README.md` and the `assets` folder to the repository root.
+2. Upload `index.html`, `netlify.toml`, `README.md`, `deployment-check.js`, and the complete `assets` and `resources` folders to the repository root.
 3. Open **Settings → Pages**.
 4. Under **Build and deployment**, choose **Deploy from a branch**.
 5. Select `main` and `/ (root)`, then save.

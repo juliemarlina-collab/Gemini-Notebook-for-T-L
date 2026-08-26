@@ -34,6 +34,15 @@ The database uses **71 current headers**. It records four demographic items, sev
 4. Click **Deploy** and copy the URL ending in `/exec`.
 5. Do not use the `/dev` testing URL in the public webinar site.
 
+### If the `/exec` URL opens Google Sign-In
+
+The endpoint is not public and a GitHub Pages or Netlify frontend cannot submit to it. Open **Deploy → Manage deployments**, edit the web-app deployment, select a **New version**, and confirm:
+
+- **Execute as:** Me
+- **Who has access:** Anyone
+
+Deploy again and open the `/exec` URL in an Incognito window. A working endpoint displays a short JSON response containing `"ok": true`; it must not redirect to Google Sign-In. If **Anyone** is unavailable under an institutional Workspace account, use an account that permits public Apps Script web apps or request the setting from the Workspace administrator.
+
 ## Part C — Connect the existing webapp
 
 The latest webapp package already contains the demographic section, consent box and submission code. To connect it:
