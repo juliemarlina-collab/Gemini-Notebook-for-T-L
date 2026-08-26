@@ -4,7 +4,7 @@
  * without editing the main webapp.
  */
 window.RESEARCH_CONFIG = {
-  endpoint: '',
+  endpoint: 'https://script.google.com/macros/s/AKfycbz1EoEnkLqnkjGkuG2TqWyj49JoUmiXgN9IthkfMQkOnY5-IewCGQogrwkTulPQHZST/exec',
   sessionCode: 'GNB-WEBINAR-2026',
   webappVersion: '1.2'
 };
