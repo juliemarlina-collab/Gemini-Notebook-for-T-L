@@ -1,0 +1,52 @@
+.research-consent-box {
+  margin-top: 18px;
+  padding: 18px;
+  border: 2px solid #17131d;
+  background: #fff6ca;
+  box-shadow: 5px 5px 0 #17131d;
+}
+
+.research-consent-box h3 {
+  margin: 0 0 12px;
+}
+
+.research-consent-box label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  line-height: 1.5;
+}
+
+.research-consent-box input[type='checkbox'] {
+  flex: 0 0 auto;
+  width: 22px;
+  height: 22px;
+  margin-top: 2px;
+}
+
+.research-consent-box button {
+  min-height: 46px;
+  margin-top: 14px;
+  padding: 11px 15px;
+  border: 2px solid #17131d;
+  background: #d9ff36;
+  color: #17131d;
+  font-weight: 900;
+}
+
+.research-consent-box button:disabled {
+  cursor: wait;
+  opacity: .65;
+}
+
+#researchSubmitStatus {
+  min-height: 24px;
+  margin: 10px 0 0;
+  font-weight: 800;
+}
+
+.research-consent-box :focus-visible {
+  outline: 4px solid #006bd6;
+  outline-offset: 3px;
+}
+
